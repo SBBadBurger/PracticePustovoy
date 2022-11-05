@@ -1,0 +1,45 @@
+﻿<Window x:Class="Practice.AddData"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:local="clr-namespace:Practice"
+        mc:Ignorable="d"
+        Title="AddData" MinHeight="300" MaxHeight="300" MinWidth="400" MaxWidth="400" Height="300" Width="400">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Label HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0" Content="Категория"/>
+        <Label HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" Grid.Column="0" Content="Назначение платежа"/>
+        <Label HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2" Grid.Column="0" Content="Количество"/>
+        <Label HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="3" Grid.Column="0" Content="Цена"/>
+
+        <ComboBox DisplayMemberPath="category_name" x:Name="comboCategor" MinHeight="30" MinWidth="220" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="0" Grid.Column="1"/>
+        <TextBox x:Name="purOfPay" Text="{Binding products.product_name}" MinHeight="30" MinWidth="220" MaxWidth="220" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="1" Grid.Column="1"/> 
+
+        <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
+            <TextBox x:Name="price" Text="{Binding products.price, StringFormat=n}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" MinHeight="30" MinWidth="130"/>
+            <Label Content="р."/>
+        </StackPanel>
+
+        <xctk:IntegerUpDown x:Name="qual" Text="{Binding count}" MinHeight="30" MinWidth="150" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="2" Grid.Column="1"/>
+
+        <StackPanel MinHeight="30" Grid.Column="1" Grid.Row="4" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
+            <Button MinWidth="70" Content="Добавить" Margin="0, 0, 10, 0" Click="addData"/>
+            <Button MinWidth="70" Content="Отменить" Margin="0, 0, 10, 0" Click="Cancle"/>
+        </StackPanel>
+
+    </Grid>
+</Window>

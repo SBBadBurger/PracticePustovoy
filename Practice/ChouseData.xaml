@@ -1,0 +1,51 @@
+﻿<Window x:Class="Practice.ChouseData"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Practice"
+        mc:Ignorable="d"
+        Title="ChouseData" MinHeight="450" MinWidth="800" Height="450" Width="800" MaxHeight="1080" MaxWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="10*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+
+            <StackPanel Orientation="Horizontal" Margin="0, 0, 20, 0">
+                <Button Content="+" Width="30" Height="30" Margin="4" Click="Button_Click"/>
+                <Button Content="-" Width="30" Height="30" Margin="4" Click="RemData"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0, 0, 20, 0">
+                <Label Content="С"/>
+                <DatePicker Name="dateFrom" CalendarClosed="DateFrom_CalendarClosed"/>
+                <Label Content="по"/>
+                <DatePicker Name="dateTo" CalendarClosed="DateTo_CalendarClosed"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0, 0, 20, 0">
+                <Label Content="Категория"/>
+                <ComboBox Name="comboBoxCategory" MinWidth="100" DropDownClosed="ComboBox_DropDownClosed"/>
+            </StackPanel>
+
+            <StackPanel MinHeight="40" Orientation="Horizontal" VerticalAlignment="Center">
+                <Button Content="Выбрать" MinWidth="70" Margin="5"/>
+                <Button Name="buttonClear" Content="Очистить" MinWidth="70" Margin="5" Click="ButtonClear_Click"/>
+                <Button Name="buttonReport" Content="Отчёт" MinWidth="70" Margin="5" Click="ButtonReport_Click"/>
+            </StackPanel>
+        </StackPanel>
+
+        <DataGrid Grid.Row="1" x:Name="datagride" AutoGenerateColumns="False" ColumnWidth="auto">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Наименование платежа" Width="2*" Binding="{Binding products.product_name}"/>
+                <DataGridTextColumn Header="Количество" Width="1*" Binding="{Binding count}"/>
+                <DataGridTextColumn Header="Цена" Width="1*" Binding="{Binding products.price, StringFormat=n}"/>
+                <DataGridTextColumn Header="Сумма" Width="1*" Binding="{Binding sum, StringFormat=n}"/>
+                <DataGridTextColumn Header="Категория" Width="2*" Binding="{Binding products.categories.category_name}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>
